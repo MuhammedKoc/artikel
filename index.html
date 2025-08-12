@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artikel - Ürün Takip Tablosu</title>
+    <!-- Harici stil dosyasını dahil et -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.3.7/photoswipe.min.css">   
+</head>
+<body>
+
+    <!-- Ana İçerik -->
+    <div id="mainContent" class="visible">
+        <div class="container">
+            <div class="header-box">
+                <h1>Artikel</h1>
+                <span class="author-name">By Muhammed Koç</span>
+            </div>
+            <input type="text" id="aramaCubugu" placeholder="Ürün adı, kod, tarih, link veya fiyat ara...">
+        
+            <div class="table-responsive-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ÜRÜN ADI</th>
+                            <th>KOD</th>
+                            <th>FİYAT</th>
+                            <th>GELDİĞİ TARİH</th>
+                            <th>AFİŞ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabloGovdesi">
+                        <!-- Veriler buraya JavaScript ile eklenecek -->
+                    </tbody>
+                </table>
+            </div>
+        
+            <!-- Sayfalama (Pagination) Kontrolleri -->
+            <div class="pagination-controls">
+                <button id="prevPageBtn">Önceki</button>
+                <span id="pageInfo">Sayfa 1 / 1</span>
+                <button id="nextPageBtn">Sonraki</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Afiş Modal Yapısı (Başlangıçta gizli) -->
+    <div id="posterModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-button" onclick="kapatAfisModal()">&times;</span>
+            <div class="zoom-container">
+                <img id="modalPosterImage" src="" alt="Ürün Afişi">
+            </div>
+        </div>
+    </div>
+
+    <!-- Harici JavaScript dosyasını dahil et -->
+     <script type="module">
+    import PhotoSwipe from 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.3.7/photoswipe.esm.min.js';
+    window.PhotoSwipe = PhotoSwipe;
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.3.7/photoswipe-lightbox.esm.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
