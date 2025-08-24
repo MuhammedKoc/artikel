@@ -200,5 +200,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Sayfa yüklendiğinde verileri çekmeye başla
+    navigator.serviceWorker.register('/sw.js')
     verileriGetir();
 });
