@@ -253,6 +253,18 @@ tbody tr.hidden {
         font-size: 13px;
     }
 }
+
+.redirect-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 40px; /* Genişlik 70px olarak güncellendi */
+    height: auto; /* Oranları koruyarak yüksekliği ayarla */
+    cursor: pointer;
+    z-index: 10;
+}
+
+
 @media screen and (max-width: 480px) {
     .container {
         margin: 5px auto;
@@ -288,4 +300,14 @@ tbody tr.hidden {
     #pageInfo {
         font-size: 14px;
     }
+/* Resimli buton için yeni eklenen CSS */
+.redirect-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 40px; /* Genişlik 70px olarak güncellendi */
+    height: auto; /* Oranları koruyarak yüksekliği ayarla */
+    cursor: pointer;
+    z-index: 10;
+}
 }

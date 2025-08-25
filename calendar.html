@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Takvim Uygulaması</title>
+    <link rel="stylesheet" href="calendar.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap">
+</head>
+<body>
+
+    <div class="calendar-container">
+        <div class="header-box">
+            <h1>Artikel</h1>
+            <span class="author-name">By Muhammed Koç</span>
+        </div>
+        <img src="list.png" alt="Başka Siteye Git" class="redirect-button" onclick="window.location.href='index.html';">
+        
+        <header class="header">
+            <div class="nav-button prev-month">&lt;</div>
+            <h1 class="month-title"></h1>
+            <div class="nav-button next-month">&gt;</div>
+        </header>
+
+        <div class="week-days">
+            <span>Pzt</span>
+            <span>Sal</span>
+            <span>Çar</span>
+            <span>Per</span>
+            <span>Cum</span>
+            <span>Cmt</span>
+            <span>Paz</span>
+        </div>
+
+        <div class="calendar-slider">
+            <div class="calendar-page">
+                <div class="days-grid"></div>
+            </div>
+            <div class="calendar-page">
+                <div class="days-grid"></div>
+            </div>
+            <div class="calendar-page">
+                <div class="days-grid"></div>
+            </div>
+            <div class="calendar-page">
+                <div class="days-grid"></div>
+            </div>
+            <div class="calendar-page">
+                <div class="days-grid"></div>
+            </div>
+            <div class="calendar-page">
+                <div class="days-grid"></div>
+            </div>
+            <div class="calendar-page">
+                <div class="days-grid"></div>
+            </div>
+            <div class="calendar-page">
+                <div class="days-grid"></div>
+            </div>
+            <div class="calendar-page">
+                <div class="days-grid"></div>
+            </div>
+            <div class="calendar-page">
+                <div class="days-grid"></div>
+            </div>
+            <div class="calendar-page">
+                <div class="days-grid"></div>
+            </div>
+            <div class="calendar-page">
+                <div class="days-grid"></div>
+            </div>
+        </div>
+
+        <div class="poster-display"></div>
+        
+        <div id="fullscreen-overlay" onclick="closeFullscreen()">
+            <span class="close-button">&times;</span>
+            <div id="fullscreen-image-container">
+                <img id="fullscreen-image" src="" alt="Tam Ekran Afiş">
+                <div class="fullscreen-navigation">
+                    <button id="prev-fullscreen" onclick="prevImage()">&lt;</button>
+                    <button id="next-fullscreen" onclick="nextImage()">&gt;</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <script src="calendar.js"></script>
+</body>
+</html>

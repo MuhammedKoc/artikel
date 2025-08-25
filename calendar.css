@@ -1,0 +1,271 @@
+/* Google Fonts - El yazısı fontları için bağlantı */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Pacifico&display=swap');
+
+/* Temel Ayarlar ve Font */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+    background-color: #fff;
+    color: #333;
+    display: flex;
+    justify-content: center;
+}
+
+.calendar-container {
+    width: 100%;
+    max-width: 450px;
+    background-color: #f7f7f7;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Başlık ve Navigasyon */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.header .month-title {
+    color: #333;
+    font-size: 24px;
+}
+
+.header .search-icon, .header .today-icon {
+    font-size: 20px;
+    cursor: pointer;
+    color: #999;
+}
+
+/* --- Takvim (Güncel ve Düzeltilmiş Kısım) --- */
+.calendar-slider {
+    width: 1200%; /* 12 takvim sayfasının toplam genişliği */
+    overflow: hidden;
+    display: flex; /* Sayfaları yatayda hizala */
+    transition: transform 0.3s ease-in-out;
+}
+
+.calendar-page {
+    flex-shrink: 0; /* Sayfaların küçülmesini engelle */
+    width: 8.333%; /* Her sayfanın %8.333 genişlik alması */
+    display: flex;
+    flex-direction: column;
+}
+
+.week-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    padding: 10px 0;
+    font-weight: bold;
+    color: #999;
+    font-size: 14px;
+}
+
+.week-days span:first-child, .week-days span:last-child {
+    color: #f00;
+}
+
+.days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+}
+
+.day {
+    padding: 15px 0;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+    border-radius: 50%;
+    margin: 5px;
+}
+
+/* Önceki ve sonraki ayların günleri daha soluk */
+.day.past-month, .day.next-month {
+    opacity: 0.3;
+    cursor: default; /* İmleci varsayılan haline getir */
+}
+
+.day.today {
+    background-color: #ddd;
+    font-weight: bold;
+}
+
+.day.selected {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Takvimde Afişi Olan Günlerin İşaretlenmesi (Çizgi) */
+.day.has-poster {
+    color: #555;
+    font-weight: bold;
+    border-radius: 0;
+}
+
+.day.has-poster::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15px;
+    height: 3px;
+    background-color: #007bff;
+    border-radius: 2px;
+}
+/* --- Takvim Sonu --- */
+
+/* Yeni Eklenen Başlık Bölümü Stilleri */
+.header-box {
+    text-align: center;
+    padding-top: 5px;
+    color: #fff;
+}
+
+.header-box h1 {
+    color: maroon;
+    margin: 0;
+    font-size: 1.5em;
+    font-family: 'Dancing Script', 'Pacifico', cursive;
+}
+
+.author-name {
+    display: block;
+    text-align: center;
+    color: #a0a0a0;
+    margin-top: -10px;
+    margin-bottom: 25px;
+    font-size: 0.75em;
+    font-family: 'Dancing Script', 'Pacifico', cursive;
+}
+
+/* Resim Görüntüleme Alanı */
+.poster-display {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 15px;
+    background-color: #f0f0f0;
+    border-top: 1px solid #ccc;
+    min-height: 200px;
+    display: none;
+}
+
+.poster-display.visible {
+    display: grid;
+}
+
+.poster-display img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Tam Ekran Overlay */
+#fullscreen-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#fullscreen-image-container {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#fullscreen-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.fullscreen-navigation button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+#prev-fullscreen {
+    left: 20px;
+    border-radius: 0 5px 5px 0;
+}
+
+#next-fullscreen {
+    right: 20px;
+    border-radius: 5px 0 0 5px;
+}
+
+/* Buton için yeni eklenen CSS */
+.redirect-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 100px; /* Masaüstü boyutu */
+    height: auto;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Mobil cihazlar için ek ayar */
+@media screen and (max-width: 480px) {
+    .redirect-button {
+        top: 1px;
+        width: 35px; 
+        height: auto; /* Mobil boyutu */
+    }
+}
