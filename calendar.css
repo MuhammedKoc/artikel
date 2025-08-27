@@ -332,3 +332,40 @@ body {
         height: 24px;
     }
 }
+
+/* Başlık ve Navigasyon */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* YENİ EKLEME */
+.header .month-selector {
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+}
+
+.header .month-title {
+    color: #333;
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+}
+
+#month-dropdown {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* Görünmez yap ama tıklanabilir kalsın */
+    cursor: pointer;
+    font-size: 18px;
+}

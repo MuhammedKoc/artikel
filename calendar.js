@@ -8,6 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const fullscreenOverlay = document.getElementById('fullscreen-overlay');
     const fullscreenImage = document.getElementById('fullscreen-image');
     
+    // Yeni eklenen elemanları seç
+    const monthSelector = document.querySelector('.month-selector');
+    const monthDropdown = document.getElementById('month-dropdown');
+
     let posterLookup = {};
     let currentDate = new Date();
     let currentMonthIndex = currentDate.getMonth();
@@ -159,6 +163,9 @@ document.addEventListener('DOMContentLoaded', () => {
         calendarSlider.style.transform = `translateX(-${currentMonthIndex * 8.333}%)`;
         const newDate = new Date(currentDate.getFullYear(), currentMonthIndex, 1);
         monthTitle.textContent = newDate.toLocaleString('tr-TR', { month: 'long', year: 'numeric' }).toUpperCase();
+        
+        // Dropdown'ın seçili ayını güncelle
+        monthDropdown.value = currentMonthIndex;
     }
 
     function initialRender() {
@@ -169,6 +176,18 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSliderPosition();
     }
 
+    // Dropdown'ı doldurma fonksiyonu
+    function populateMonthDropdown() {
+        monthNames.forEach((month, index) => {
+            const option = document.createElement('option');
+            option.value = index;
+            option.textContent = month.toUpperCase();
+            monthDropdown.appendChild(option);
+        });
+        monthDropdown.value = currentMonthIndex;
+    }
+
+    // Olay Dinleyicileri
     prevMonthButton.addEventListener('click', () => {
         currentMonthIndex = Math.max(currentMonthIndex - 1, 0);
         updateSliderPosition();
@@ -177,6 +196,25 @@ document.addEventListener('DOMContentLoaded', () => {
     nextMonthButton.addEventListener('click', () => {
         currentMonthIndex = Math.min(currentMonthIndex + 1, 11);
         updateSliderPosition();
+    });
+
+    // Ay başlığını tıklanabilir yap
+    monthTitle.addEventListener('click', () => {
+        monthDropdown.style.display = 'block';
+        monthDropdown.focus();
+    });
+    
+    // Dropdown'dan bir ay seçilince
+    monthDropdown.addEventListener('change', (e) => {
+        currentMonthIndex = parseInt(e.target.value, 10);
+        updateSliderPosition();
+        monthTitle.style.display = 'block';
+    });
+    
+    // Dropdown'dan odağı kaybedince eski haline dön
+    monthDropdown.addEventListener('blur', () => {
+        monthDropdown.style.display = 'none';
+        monthTitle.style.display = 'block';
     });
 
     calendarSlider.addEventListener('touchstart', (e) => {
@@ -243,5 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.prevImage = prevImage;
     window.nextImage = nextImage;
 
+    // Dropdown'ı başlat
+    populateMonthDropdown();
     fetchPosterData();
 });
