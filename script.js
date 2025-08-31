@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Veri çekme ve işleme fonksiyonu
     async function verileriGetir() {
         try {
-            const response = await fetch('../data.json');
+            const response = await fetch('data.json');
             if (!response.ok) {
                 throw new Error(`HTTP hata! Durum: ${response.status}`);
             }
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td>${veri.fiyat}</td>
                 <td>${veri.geldigiTarih}</td>
                 <td>
-                    <a href="../afisler/${veri.kaynakResim}"
+                    <a href="afisler/${veri.kaynakResim}"
                        data-pswp-width="1200"
                        data-pswp-height="900"
                        class="poster-button"
@@ -206,6 +206,5 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Sayfa yüklendiğinde verileri çekmeye başla
-    navigator.serviceWorker.register('/sw.js')
     verileriGetir();
 });
