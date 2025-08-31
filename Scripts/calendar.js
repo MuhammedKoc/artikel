@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+    }
+    
     const monthTitle = document.querySelector('.month-title');
     const calendarSlider = document.querySelector('.calendar-slider');
     const calendarPages = document.querySelectorAll('.calendar-page');
@@ -32,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fetchPosterData() {
         try {
-            const response = await fetch('afisDates.json');
+            const response = await fetch('../afisDates.json');
             const data = await response.json();
             
             posterLookup = {};
@@ -122,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
             posterDisplay.classList.add('visible');
             currentPosters.forEach((posterName, index) => {
                 const img = document.createElement('img');
-                img.src = `afisler/${posterName}`;
+                img.src = `../afisler/${posterName}`;
                 img.alt = `Afiş - ${date}`;
                 img.addEventListener('click', () => openFullscreen(index));
                 posterDisplay.appendChild(img);

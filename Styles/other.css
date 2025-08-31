@@ -1,0 +1,139 @@
+/* Other Page Styles */
+.settings-section {
+    margin-top: 25px; /* Üstten boşluğu biraz daha artır */
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Hafif gölge ekleyelim */
+}
+
+body.dark-mode .settings-section {
+    background-color: #3a3a3a;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.settings-section h2 { /* Sayfa başlığı için stil */
+    font-size: 1.5em; /* Başlık boyutunu ayarla */
+    color: #333;
+    margin-bottom: 25px; /* Başlık altından boşluk */
+    text-align: center; /* Başlığı ortala */
+}
+
+body.dark-mode .settings-section  h2 {
+    color: #f0f0f0;
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0; /* İç boşluğu artır */
+    border-bottom: 1px solid #eee;
+    font-size: 1.1em; /* Metin boyutunu biraz artır */
+}
+
+body.dark-mode .setting-item {
+    border-bottom: 1px solid #555;
+    color: #e0e0e0; /* Koyu temada metin rengi */
+}
+
+.setting-item:last-child {
+    border-bottom: none;
+}
+
+/* Yeni Buton Toggle Stilleri */
+.theme-toggle {
+    --size: 3rem; /* Buton boyutunu kontrol etmek için CSS değişkeni */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    inline-size: var(--size);
+    block-size: var(--size);
+    border-radius: 50%;
+    color: currentColor;
+    display: grid;
+    place-content: center;
+    box-shadow: 0 0 0 1px hsl(0 0% 50% / 0);
+    transition: box-shadow 200ms ease;
+}
+
+.theme-toggle:focus-visible {
+    box-shadow: 0 0 0 1px hsl(0 0% 50% / 1);
+}
+
+.theme-toggle svg {
+    inline-size: 80%; /* Buton içindeki SVG boyutu */
+    block-size: 80%;
+    stroke: currentColor;
+    transition: all 400ms ease-in-out;
+}
+
+/* Gündüz teması (light mode) */
+.theme-toggle:not([title*="light"]) .theme-toggle__classic circle {
+    fill: #f0c420; /* Güneş rengi */
+}
+
+.theme-toggle:not([title*="light"]) .theme-toggle__classic g:nth-child(2) {
+    stroke: #b00000; /* Güneş ışınlarının rengi (kırmızı) */
+}
+
+/* Gece teması (dark mode) */
+body.dark-mode .theme-toggle__classic circle {
+    fill: #fff; /* Ay rengi */
+}
+
+body.dark-mode .theme-toggle__classic path {
+    stroke-dasharray: 24;
+    stroke-dashoffset: 40;
+}
+
+/* Mobil için responsive ayarlar */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+    .settings-section {
+        padding: 15px;
+    }
+    .settings-section h2 {
+        font-size: 1.3em;
+        margin-bottom: 20px;
+    }
+    .setting-item {
+        font-size: 1em;
+        padding: 12px 0;
+    }
+    .theme-toggle {
+        --size: 2.5rem; /* Mobil için boyutu küçült */
+    }
+}
+
+/* Combobox Stilleri */
+#themeSelector {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    -webkit-appearance: none; /* Varsayılan ok simgesini gizle */
+    -moz-appearance: none;    /* Varsayılan ok simgesini gizle */
+    appearance: none;         /* Varsayılan ok simgesini gizle */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14L2.451 5.61C1.885 4.965 2.345 4 3.204 4h9.592a1 1 0 0 1 .858 1.61L8.753 11.14a1 1 0 0 1-1.506 0z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center; /* Oku biraz sağa kaydır */
+    padding-right: 30px; /* Ok için yeterli boşluk bırak */
+}
+
+body.dark-mode #themeSelector {
+    background-color: #4a4a4a;
+    color: #e0e0e0;
+    border-color: #666;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14L2.451 5.61C1.885 4.965 2.345 4 3.204 4h9.592a1 1 0 0 1 .858 1.61L8.753 11.14a1 1 0 0 1-1.506 0z"/></svg>');
+    background-position: right 10px center; /* Koyu temada da oku sağa kaydır */
+}

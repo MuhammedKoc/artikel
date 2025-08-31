@@ -369,3 +369,147 @@ body {
     cursor: pointer;
     font-size: 18px;
 }
+
+/* Kırmızı Vurgulu Koyu Tema (Dark Mode) Stilleri */
+body.dark-mode {
+    background-color: #1a1a1a; /* Koyu gri arka plan */
+    color: #e0e0e0; /* Açık gri metin */
+}
+
+body.dark-mode .container {
+    background-color: #2c2c2c; /* Koyu gri konteyner arka planı */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode h1,
+body.dark-mode .header .month-title {
+    color: #f0f0f0; /* Beyazımsı başlık metni */
+}
+
+body.dark-mode h1 {
+    color: #b00000; /* Kırmızı vurgu için 'maroon' rengi */
+}
+
+body.dark-mode .author-name {
+    color: #d3d3d3;
+}
+
+/* Arama Çubuğu */
+body.dark-mode #aramaCubugu {
+    background-color: #3a3a3a;
+    border: 1px solid #555;
+    color: #e0e0e0;
+}
+
+body.dark-mode #aramaCubugu:focus {
+    border-color: #b00000; /* Kırmızı kenarlık vurgusu */
+}
+
+/* Tablo */
+body.dark-mode thead th {
+    background-color: #b00000; /* Kırmızı başlık arka planı */
+    color: #fff;
+    border-bottom: 1px solid #555;
+}
+
+body.dark-mode tbody tr:nth-child(even) {
+    background-color: #333333;
+}
+
+body.dark-mode tbody tr:nth-child(odd) {
+    background-color: #2c2c2c;
+}
+
+body.dark-mode tbody tr:hover {
+    background-color: #4a4a4a;
+}
+
+body.dark-mode td {
+    color: #d0d0d0;
+}
+
+/* Sayfalama Kontrolleri */
+body.dark-mode .pagination button {
+    background-color: #4a4a4a;
+    color: #e0e0e0;
+    border: 1px solid #555;
+}
+
+body.dark-mode .pagination button:hover:not(:disabled) {
+    background-color: #5a5a5a;
+}
+
+body.dark-mode .pagination button:disabled {
+    background-color: #3a3a3a;
+    color: #777;
+}
+
+/* Afiş Butonu */
+body.dark-mode .poster-button {
+    background-color: #b00000; /* Kırmızı buton */
+}
+
+body.dark-mode .poster-button:hover {
+    background-color: #8b0000; /* Kırmızı tonu */
+}
+
+/* Alt Navigasyon Çubuğu */
+body.dark-mode .bottom-nav {
+    background-color: #2c2c2c;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.4);
+    border-top: 1px solid #3a3a3a;
+}
+
+body.dark-mode .nav-item {
+    color: #a0a0a0;
+}
+
+body.dark-mode .nav-item .icon {
+    color: #a0a0a0;
+}
+
+body.dark-mode .nav-item.active {
+    color: #b00000; /* Aktif navigasyon öğesi için kırmızı renk */
+}
+
+body.dark-mode .nav-item.active .icon {
+    color: #b00000; /* Aktif ikon için kırmızı renk */
+}
+
+/* Takvim Sayfası */
+body.dark-mode .calendar-container {
+    background-color: #2c2c2c;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .header {
+    background-color: #2c2c2c;
+    border-bottom-color: #3a3a3a;
+}
+
+body.dark-mode .week-days span {
+    color: #909090;
+}
+
+body.dark-mode .day {
+    color: #d0d0d0;
+}
+
+body.dark-mode .day.today {
+    background-color: #4a4a4a;
+    color: #f0f0f0;
+}
+
+body.dark-mode .day.selected {
+    background-color: #b00000; /* Seçili gün için kırmızı vurgu */
+    color: #fff;
+}
+
+body.dark-mode .day.has-poster::after {
+    background-color: #b00000; /* Poster olan günün işareti için kırmızı vurgu */
+}
+
+body.dark-mode .poster-display {
+    background-color: #2c2c2c;
+    border-top: 1px solid #3a3a3a;
+}

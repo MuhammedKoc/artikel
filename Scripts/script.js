@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+    }
+
+    
     // HTML elemanlarını seç
     const aramaCubugu = document.getElementById('aramaCubugu');
     const tabloGovdesi = document.getElementById('tabloGovdesi');
@@ -71,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Veri çekme ve işleme fonksiyonu
     async function verileriGetir() {
         try {
-            const response = await fetch('data.json');
+            const response = await fetch('../data.json');
             if (!response.ok) {
                 throw new Error(`HTTP hata! Durum: ${response.status}`);
             }
@@ -114,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td>${veri.fiyat}</td>
                 <td>${veri.geldigiTarih}</td>
                 <td>
-                    <a href="afisler/${veri.kaynakResim}"
+                    <a href="../afisler/${veri.kaynakResim}"
                        data-pswp-width="1200"
                        data-pswp-height="900"
                        class="poster-button"
