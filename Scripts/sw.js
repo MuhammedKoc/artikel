@@ -6,8 +6,14 @@ const CACHE_DYNAMIC_NAME = 'site-dynamic-v1';
 const staticAssets = [
   '/', 
   '/index.html',
-  '/style.css',
-  '/script.js',
+  '/Styles/style.css', // Düzeltildi
+  '/Scripts/script.js', // Düzeltildi
+  '/Pages/calendar.html', // Düzeltildi
+  '/Styles/calendar.css', // Düzeltildi
+  '/Scripts/calendar.js', // Düzeltildi
+  '/Pages/other.html', // Düzeltildi
+  '/Styles/other.css', // Düzeltildi
+  '/Scripts/other.js', // Düzeltildi
   '/data.json',
   '/favicon.ico',
   '/afisler/' // afisler klasörü
