@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateFullscreenImage() {
         if (currentPosters.length > 0) {
             const posterName = currentPosters[currentPosterIndex];
-            fullscreenImage.src = `afisler/${posterName}`;
+            fullscreenImage.src = `../afisler/${posterName}`;
         }
     }
 
