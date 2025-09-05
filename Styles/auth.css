@@ -1,0 +1,352 @@
+/* auth.css - Minimalist ve Modern Form Stili (Güncellenmiş) */
+
+/* Genel Sayfa Ayarları */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f2f5, #e0e6ed);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Koyu Mod için Genel Ayarlar */
+body.dark-mode {
+    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+    color: #e0e0e0; /* Varsayılan metin rengi */
+}
+
+/* Konteyner */
+.auth-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Koyu Mod Konteyner */
+body.dark-mode .auth-container {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Başlık */
+.header-box h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3em;
+    color: #444;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Koyu Mod Başlık */
+body.dark-mode .header-box h1 {
+    color: #f0f0f0;
+}
+
+/* Formlar */
+.auth-form {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.auth-form.active {
+    display: block;
+    opacity: 1;
+}
+
+.auth-form h2 {
+    font-size: 1.8em;
+    color: #333;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Koyu Mod Form Başlığı */
+body.dark-mode .auth-form h2 {
+    color: #e0e0e0;
+}
+
+/* Giriş Grubu (İkon ve Input) */
+.form-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.form-group .icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 1.1em;
+    z-index: 1;
+}
+
+/* Koyu Mod İkon Rengi */
+body.dark-mode .form-group .icon {
+    color: #ccc;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 15px 15px 15px 50px;
+    border: none;
+    background-color: #f7f7f7;
+    border-radius: 25px;
+    font-size: 1em;
+    color: #333;
+    transition: box-shadow 0.3s, background-color 0.3s;
+    outline: none;
+    box-sizing: border-box;
+}
+
+/* Koyu Mod Input Alanı */
+body.dark-mode .form-group input {
+    background-color: #333;
+    color: #f0f0f0;
+    border: 1px solid #555;
+}
+
+.form-group input:focus {
+    background-color: #fff;
+    box-shadow: 0 0 0 2px #b00000;
+}
+
+/* Koyu Mod Input Focus */
+body.dark-mode .form-group input:focus {
+    background-color: #444;
+    box-shadow: 0 0 0 2px #ff4d4d;
+}
+
+.form-group input::placeholder {
+    color: #aaa;
+}
+
+/* Koyu Mod Placeholder Rengi */
+body.dark-mode .form-group input::placeholder {
+    color: #888;
+}
+
+/* Form Seçenekleri (Beni Hatırla & Şifremi Unuttum) */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 0.9em;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+}
+
+/* Koyu Mod Checkbox ve Yazı Rengi */
+body.dark-mode .checkbox-container {
+    color: #ccc;
+}
+
+.checkbox-container input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    background-color: #e0e0e0;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+/* Koyu Mod Checkbox */
+body.dark-mode .checkbox-container input[type="checkbox"] {
+    background-color: #555;
+}
+
+/* Tıklandığında aktif olan stil */
+.checkbox-container input[type="checkbox"]:checked {
+    background-color: #b00000;
+    box-shadow: 0 0 5px rgba(176, 0, 0, 0.4);
+}
+
+/* Koyu Mod Checkbox Tıklandığında */
+body.dark-mode .checkbox-container input[type="checkbox"]:checked {
+    background-color: #ff4d4d;
+    box-shadow: 0 0 5px rgba(255, 77, 77, 0.4);
+}
+
+/* Onay işareti (✓) */
+.checkbox-container input[type="checkbox"]:checked::before {
+    content: '\2713';
+    color: #fff;
+    font-size: 14px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.checkbox-container label {
+    color: #666;
+    user-select: none;
+}
+
+/* Koyu Mod Checkbox Etiketi */
+body.dark-mode .checkbox-container label {
+    color: #ccc;
+}
+
+/* Küçük ekranlarda boyut ayarı */
+@media (max-width: 500px) {
+    .checkbox-container input[type="checkbox"] {
+        height: 18px;
+        width: 18px;
+    }
+
+    .checkbox-container input[type="checkbox"]:checked::before {
+        font-size: 12px;
+    }
+}
+
+.forgot-password {
+    color: #b00000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Koyu Mod Şifremi Unuttum linki */
+body.dark-mode .forgot-password {
+    color: #ff4d4d;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Buton */
+.submit-button {
+    width: 70%;
+    margin: 0 auto;
+    display: block;
+    padding: 12px;
+    background: linear-gradient(45deg, #b00000, #ff4d4d);
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 4px 15px rgba(176, 0, 0, 0.2);
+}
+
+.submit-button:hover {
+    background: linear-gradient(45deg, #a00000, #e63939);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(176, 0, 0, 0.3);
+}
+
+/* Form Geçiş Metni */
+.toggle-text {
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #666;
+    text-align: center;
+}
+
+/* Koyu Mod Geçiş Metni */
+body.dark-mode .toggle-text {
+    color: #ccc;
+}
+
+.toggle-text a {
+    color: #b00000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Koyu Mod Geçiş Metni Linki */
+body.dark-mode .toggle-text a {
+    color: #ff4d4d;
+}
+
+.toggle-text a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 500px) {
+    .auth-container {
+        padding: 20px;
+        margin: 10px;
+        max-width: 100%;
+    }
+
+    .form-group input {
+        padding: 12px 1a2px 12px 45px;
+    }
+
+    .form-group .icon {
+        font-size: 1em;
+        left: 12px;
+    }
+}
+
+/* Mesaj Kutusu Stilleri */
+.message-box {
+    text-align: center;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: bold;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+
+/* Başarılı mesajlar için */
+.message-box.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Hata mesajları için */
+.message-box.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Karanlık mod uyumluluğu */
+body.dark-mode .message-box.success {
+    background-color: #1c743e;
+    color: #d4edda;
+    border-color: #155724;
+}
+
+body.dark-mode .message-box.error {
+    background-color: #8b0000;
+    color: #f8d7da;
+    border-color: #721c24;
+}

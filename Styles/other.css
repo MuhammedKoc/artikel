@@ -1,10 +1,167 @@
-/* Other Page Styles */
+/* other.css - Profil ve Ayarlar Sayfası Stili */
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* İçeriği en üste hizala */
+    min-height: 100vh;
+    background-color: #f0f2f5;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0 auto;
+    box-sizing: border-box;
+    position: relative;
+    width: 100%; /* Tüm genişliği kapla */
+}
+
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+}
+
+.container {
+    width: 100%;
+    max-width: 450px;
+    height: 100%;
+    background-color: #f7f7f7;
+    border-radius: 0px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content-panel {
+    background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.866) 0px 3px 8px; /* Gölge efektini korudum */
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    border-radius: 12px;
+    box-sizing: border-box;
+    flex-grow: 1;
+    padding-top: 50px;
+    padding-bottom: 80px;
+    margin-top: 10px;
+}
+
+body.dark-mode .main-content-panel {
+    background-color: #2a2a2a;
+    box-shadow: rgba(0, 0, 0, 0.866) 0px 3px 8px; /* Koyu mod için de gölgeyi ekledim */
+}
+
+.profile-card-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.profile-image-wrapper {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 3px solid #e0e0e0;
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-name {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+    font-family: 'Poppins', sans-serif;
+}
+
+body.dark-mode .profile-name {
+    color: #e0e0e0;
+}
+
+.profile-description {
+    font-size: 1em;
+    color: #777;
+    margin-bottom: 30px;
+}
+
+body.dark-mode .profile-description {
+    color: #c0c0c0;
+}
+
+.profile-actions {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.action-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    height: 90px;
+    border: none;
+    border-radius: 12px;
+    background-color: #f0f2f5;
+    color: #555;
+    font-size: 0.85em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode .action-button {
+    background-color: #383838;
+    color: #e0e0e0;
+}
+
+.action-button i {
+    font-size: 1.5em;
+    margin-bottom: 8px;
+    color: #666;
+}
+
+body.dark-mode .action-button i {
+    color: #e0e0e0;
+}
+
+.action-button:hover {
+    background-color: #e0e2e5;
+    color: #333;
+    transform: translateY(-2px);
+}
+
+body.dark-mode .action-button:hover {
+    background-color: #484848;
+    color: #fff;
+}
+
 .settings-section {
-    margin-top: 25px; /* Üstten boşluğu biraz daha artır */
+    width: 100%;
     padding: 20px;
     background-color: #f7f7f7;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Hafif gölge ekleyelim */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    box-sizing: border-box;
 }
 
 body.dark-mode .settings-section {
@@ -12,108 +169,24 @@ body.dark-mode .settings-section {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
-.settings-section h2 { /* Sayfa başlığı için stil */
-    font-size: 1.5em; /* Başlık boyutunu ayarla */
-    color: #333;
-    margin-bottom: 25px; /* Başlık altından boşluk */
-    text-align: center; /* Başlığı ortala */
-}
-
-body.dark-mode .settings-section  h2 {
-    color: #f0f0f0;
-}
-
 .setting-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 0; /* İç boşluğu artır */
+    padding: 15px 0;
     border-bottom: 1px solid #eee;
-    font-size: 1.1em; /* Metin boyutunu biraz artır */
+    font-size: 1.1em;
 }
 
 body.dark-mode .setting-item {
     border-bottom: 1px solid #555;
-    color: #e0e0e0; /* Koyu temada metin rengi */
+    color: #e0e0e0;
 }
 
 .setting-item:last-child {
     border-bottom: none;
 }
 
-/* Yeni Buton Toggle Stilleri */
-.theme-toggle {
-    --size: 3rem; /* Buton boyutunu kontrol etmek için CSS değişkeni */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
-    inline-size: var(--size);
-    block-size: var(--size);
-    border-radius: 50%;
-    color: currentColor;
-    display: grid;
-    place-content: center;
-    box-shadow: 0 0 0 1px hsl(0 0% 50% / 0);
-    transition: box-shadow 200ms ease;
-}
-
-.theme-toggle:focus-visible {
-    box-shadow: 0 0 0 1px hsl(0 0% 50% / 1);
-}
-
-.theme-toggle svg {
-    inline-size: 80%; /* Buton içindeki SVG boyutu */
-    block-size: 80%;
-    stroke: currentColor;
-    transition: all 400ms ease-in-out;
-}
-
-/* Gündüz teması (light mode) */
-.theme-toggle:not([title*="light"]) .theme-toggle__classic circle {
-    fill: #f0c420; /* Güneş rengi */
-}
-
-.theme-toggle:not([title*="light"]) .theme-toggle__classic g:nth-child(2) {
-    stroke: #b00000; /* Güneş ışınlarının rengi (kırmızı) */
-}
-
-/* Gece teması (dark mode) */
-body.dark-mode .theme-toggle__classic circle {
-    fill: #fff; /* Ay rengi */
-}
-
-body.dark-mode .theme-toggle__classic path {
-    stroke-dasharray: 24;
-    stroke-dashoffset: 40;
-}
-
-/* Mobil için responsive ayarlar */
-@media (max-width: 600px) {
-    .container {
-        padding: 15px;
-    }
-    .settings-section {
-        padding: 15px;
-    }
-    .settings-section h2 {
-        font-size: 1.3em;
-        margin-bottom: 20px;
-    }
-    .setting-item {
-        font-size: 1em;
-        padding: 12px 0;
-    }
-    .theme-toggle {
-        --size: 2.5rem; /* Mobil için boyutu küçült */
-    }
-}
-
-/* Combobox Stilleri */
 #themeSelector {
     padding: 8px 12px;
     border: 1px solid #ccc;
@@ -121,13 +194,13 @@ body.dark-mode .theme-toggle__classic path {
     background-color: #fff;
     font-size: 1em;
     cursor: pointer;
-    -webkit-appearance: none; /* Varsayılan ok simgesini gizle */
-    -moz-appearance: none;    /* Varsayılan ok simgesini gizle */
-    appearance: none;         /* Varsayılan ok simgesini gizle */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14L2.451 5.61C1.885 4.965 2.345 4 3.204 4h9.592a1 1 0 0 1 .858 1.61L8.753 11.14a1 1 0 0 1-1.506 0z"/></svg>');
     background-repeat: no-repeat;
-    background-position: right 10px center; /* Oku biraz sağa kaydır */
-    padding-right: 30px; /* Ok için yeterli boşluk bırak */
+    background-position: right 10px center;
+    padding-right: 30px;
 }
 
 body.dark-mode #themeSelector {
@@ -135,5 +208,73 @@ body.dark-mode #themeSelector {
     color: #e0e0e0;
     border-color: #666;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14L2.451 5.61C1.885 4.965 2.345 4 3.204 4h9.592a1 1 0 0 1 .858 1.61L8.753 11.14a1 1 0 0 1-1.506 0z"/></svg>');
-    background-position: right 10px center; /* Koyu temada da oku sağa kaydır */
+    background-position: right 10px center;
+}
+
+.logout-button {
+    width: 100%;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    background-color: #dc3545;
+    color: #ffffff;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #c82333;
+}
+
+/* Alt navigasyon çubuğu */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flexbox;
+    align-items: center;
+    background-color: #fff;
+    border-top: 1px solid #e0e0e0;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+    height: 60px;
+    z-index: 1000;
+}
+
+body.dark-mode .bottom-nav {
+    background-color: #2a2a2a;
+    border-top: 1px solid #444;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #888;
+    font-size: 0.8em;
+    transition: color 0.3s ease;
+    flex: 1;
+    height: 100%;
+}
+
+.nav-item.active {
+    color: #b00000;
+}
+
+body.dark-mode .nav-item {
+    color: #888;
+}
+
+body.dark-mode .nav-item.active {
+    color: #b00000;
+}
+
+.nav-item .icon {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 4px;
 }
