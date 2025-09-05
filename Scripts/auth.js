@@ -88,6 +88,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const password = registerForm.querySelector('#register-password').value;
             const fullname = registerForm.querySelector('#register-fullname').value;
             const branch = registerForm.querySelector('#register-branch').value;
+            const email = registerForm.querySelector('#register-email').value;
+
+            if (isNaN(username)) {
+                displayMessage("Kullanıcı kodunuz sadece sayılardan oluşmalıdır.", "error", "message-box-register");
+                return;
+            }
 
             // Önce kullanıcı adının veritabanında olup olmadığını kontrol et
             getDoc(doc(db, "users", username)).then((docSnapshot) => {
@@ -99,7 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     setDoc(doc(db, "users", username), {
                         fullname: fullname,
                         branch: branch,
-                        password: password
+                        password: password,
+                        email: email
                     })
                     .then(() => {
                         displayMessage("Kayıt işlemi başarılı! Hoş geldiniz.", "success", "message-box-register");
