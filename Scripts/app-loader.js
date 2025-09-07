@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+    }
+    
     const params = new URLSearchParams(window.location.search);
     const appName = params.get('app');
     const appContentDiv = document.getElementById('app-content');
