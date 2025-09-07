@@ -67,10 +67,16 @@ shareButton.addEventListener('click', function() {
 
 // Inputlara tıklandığında imleci en sona atma özelliği ekle
 ekmekInputs.forEach(input => {
-    input.addEventListener('focus', function() {
-        // İmleci metnin sonuna taşı
-        this.setSelectionRange(this.value.length, this.value.length);
-    });
+    const parentDiv = input.closest('.form-group');
+    if (parentDiv) {
+        parentDiv.addEventListener('click', function() {
+            input.focus();
+            setTimeout(() => {
+                // İmleci metnin sonuna taşı
+                input.setSelectionRange(input.value.length, input.value.length);
+            }, 0);
+        });
+    }
 });
 
 ekmekInputs.forEach(input => {
