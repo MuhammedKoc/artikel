@@ -65,22 +65,10 @@ shareButton.addEventListener('click', function() {
     }
 });
 
+// Inputlara tıklandığında imleci en sona atma özelliği ekle
 ekmekInputs.forEach(input => {
-        input.addEventListener('focus', function() {
-            // Sadece mobil cihazlar için bu davranışı tetikle
-            const isMobile = ('ontouchstart' in window || navigator.maxTouchPoints > 0);
-            
-            if (isMobile) {
-                // Giriş tipini geçici olarak "text" yap
-                this.type = 'text';
-
-                // İmleci metnin sonuna taşı
-                this.setSelectionRange(this.value.length, this.value.length);
-                
-                // Kısa bir süre sonra geri "number" yap
-                setTimeout(() => {
-                    this.type = 'number';
-                }, 10);
-            }
-        });
+    input.addEventListener('focus', function() {
+        // İmleci metnin sonuna taşı
+        this.setSelectionRange(this.value.length, this.value.length);
+    });
 });

@@ -190,7 +190,7 @@ body.dark-mode #app-content {
     color: #555;
 }
 
-.form-group input[type="number"] {
+.form-group input[type="text"] {
     width: 100px; /* Daha dar bir genişlik */
     padding: 8px 12px;
     border: 1px solid #ccc;
@@ -199,7 +199,7 @@ body.dark-mode #app-content {
     font-size: 1em;
 }
 
-.form-group input[type="number"]:focus {
+.form-group input[type="text"]:focus {
     border-color: maroon;
     outline: none;
 }
@@ -258,13 +258,13 @@ body.dark-mode .form-group label {
     color: #ccc;
 }
 
-body.dark-mode .form-group input[type="number"] {
+body.dark-mode .form-group input[type="text"] {
     background-color: #3a3a3a;
     border: 1px solid #555;
     color: #e0e0e0;
 }
 
-body.dark-mode .form-group input[type="number"]:focus {
+body.dark-mode .form-group input[type="text"]:focus {
     border-color: #b00000;
 }
 
