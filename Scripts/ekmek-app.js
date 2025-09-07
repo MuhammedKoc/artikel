@@ -29,14 +29,13 @@ copyButton.addEventListener('click', function() {
         // Navigator API ile panoya kopyala
         navigator.clipboard.writeText(ekmekList)
             .then(() => {
-                alert('Ekmek listesi panoya kopyalandı!');
+                
             })
             .catch(err => {
                 console.error('Kopyalama işlemi başarısız oldu: ', err);
-                alert('Kopyalama işlemi başarısız oldu.');
             });
     } else {
-        alert('Kopyalanacak bir ürün bulunmamaktadır.');
+        navigator.clipboard.writeText("İade Ekmek Yok");
     }
 });
 
@@ -68,7 +67,6 @@ shareButton.addEventListener('click', function() {
 
 ekmekInputs.forEach(input => {
     input.addEventListener('focus', function() {
-        // İmleci metnin sonuna taşı
-        this.setSelectionRange(this.value.length, this.value.length);
+        this.select();
     });
 });
