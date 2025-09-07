@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     if (appName) {
-        const appFileName = `../Pages/${appName}-app.html`;
-        const scriptFileName = `../Scripts/${appName}-app.js`;
+        const appFileName = `../Pages/apps/${appName}-app.html`;
+        const scriptFileName = `../Scripts/apps/${appName}-app.js`;
         const appPageTitle = appTitles[appName] || 'Uygulama';
 
         document.title = `Artikel - ${appPageTitle}`;
