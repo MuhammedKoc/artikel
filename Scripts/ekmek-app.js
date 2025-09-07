@@ -80,9 +80,28 @@ ekmekInputs.forEach(input => {
 });
 
 ekmekInputs.forEach(input => {
-    input.addEventListener('click', function(e) {
-        // Tıklama olayını durdur, böylece ana div'in olayı tetiklenir
+    // Input'a doğrudan tıklandığında imlecin pozisyonunu kontrol et
+    input.addEventListener('mousedown', function(e) {
+        // Varsayılan tıklama davranışını durdur
         e.preventDefault();
-        e.stopPropagation();
+        
+        // Input'u manuel olarak odakla
+        this.focus();
+        
+        // İmleci metnin en sonuna taşı
+        setTimeout(() => {
+            this.setSelectionRange(this.value.length, this.value.length);
+        }, 1);
     });
+
+    // Satırın tamamına tıklama olayını dinle
+    const parentDiv = input.closest('.form-group');
+    if (parentDiv) {
+        parentDiv.addEventListener('click', function() {
+            input.focus();
+            setTimeout(() => {
+                input.setSelectionRange(input.value.length, input.value.length);
+            }, 1);
+        });
+    }
 });
