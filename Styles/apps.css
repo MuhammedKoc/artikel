@@ -294,6 +294,6 @@ body.dark-mode .btn-secondary:hover {
 
 .form-group input {
     /* Input elementini tıklanamaz yapar, ancak hala focus olabilir */
-    pointer-events: none;
+    
     cursor: pointer; /* Tıklanabilir satırın imlecini korur */
 }
