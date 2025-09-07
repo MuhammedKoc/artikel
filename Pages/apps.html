@@ -3,82 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artikel - Ürün Takip Tablosu</title>
-    <script type="module" src="./Scripts/check-auth.js"></script>
-    <link rel="stylesheet" href="Styles/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.3.7/photoswipe.min.css">   
+    <title>Artikel - Uygulamalar</title>
+    <link rel="stylesheet" href="../Styles/style.css">
+    <link rel="stylesheet" href="../Styles/apps.css">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
 </head>
 <body>
 
     <div id="mainContent" class="visible">
-        <div class="container">
+        <div class="container apps-container">
             <div class="header-box">
                 <h1>Artikel</h1>
                 <span class="author-name">By Muhammed Koç</span>
             </div>
-            <input type="text" id="aramaCubugu" placeholder="Ürün adı, kod, tarih, link veya fiyat ara...">
-        
-            <div class="table-responsive-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ÜRÜN ADI</th>
-                            <th>KOD</th>
-                            <th>FİYAT</th>
-                            <th>GELDİĞİ TARİH</th>
-                            <th>AFİŞ</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tabloGovdesi">
-                        </tbody>
-                </table>
-            </div>
-        
-            <div class="pagination-controls">
-                <button id="prevPageBtn">Önceki</button>
-                <span id="pageInfo">Sayfa 1 / 1</span>
-                <button id="nextPageBtn">Sonraki</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="posterModal" class="modal-overlay">
-        <div class="modal-content">
-            <span class="close-button" onclick="kapatAfisModal()">&times;</span>
-            <div class="zoom-container">
-                <img id="modalPosterImage" src="" alt="Ürün Afişi">
+            
+            <div class="app-section">
+                <h2>Uygulamalar</h2>
+                <div class="app-grid">
+                    
+                    <a href="app-base.html?app=ekmek" class="app-item">
+                        <div class="app-icon"><i class="fa-solid fa-bread-slice"></i></div>
+                        <span class="app-name">Ekmek Sayım</span>
+                    </a>
+                    
+                    <a href="app-base.html?app=tavuk" class="app-item">
+                        <div class="app-icon"><i class="fa-solid fa-egg"></i></div>
+                        <span class="app-name">Tavuk Sayım</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="bottom-nav">
-        <a href="index.html" class="nav-item active">
+        <a href="../index.html" class="nav-item">
             <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="-1.5 -1 16 16"><path fill="currentColor" fill-rule="evenodd" d="M2 2.5a1 1 0 1 1-2 0a1 1 0 0 1 2 0M1 8a1 1 0 1 0 0-2a1 1 0 0 0 0 2m0 4.5a1 1 0 1 0 0-2a1 1 0 0 0 0 2M4.75 1.75a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5zM4 7a.75.75 0 0 1 .75-.75h8.5a.75.75 0 0 1 0 1.5h-8.5A.75.75 0 0 1 4 7m.75 3.75a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5z" clip-rule="evenodd"/></svg>
             <span>Liste</span>
         </a>
-        <a href="Pages/calendar.html" class="nav-item">
+        <a href="calendar.html" class="nav-item">
             <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="-3 0 24 24"><path fill="currentColor" d="M17 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3v2a2 2 0 1 0 4 0V2h1v2a2 2 0 1 0 4 0V2h1v2a2 2 0 1 0 4 0V2zM3 8v2h2V8H3zm0 4v2h2v-2H3zm12 0v2h2v-2h-2zm0-4v2h2V8h-2zM7 8v2h2V8H7zm4 0v2h2V8h-2zm0 4v2h2v-2h-2zm-4 0v2h2v-2H7zM5 0a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0V1a1 1 0 0 1 1-1zm10 0a1 1 0 0 1 1 1v3a1 1 0 0 1-2 0V1a1 1 0 0 1 1-1zm-5 0a1 1 0 0 1 1 1v3a1 1 0 0 1-2 0V1a1 1 0 0 1 1-1z"/></svg>
             <span>Takvim</span>
         </a>
-        <a href="/Pages/apps.html" class="nav-item">
+        <a href="apps.html" class="nav-item active">
             <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M4 14.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5zm.5 1h4v4h-4zM14 14.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5zm.5 1h4v4h-4zM4 4.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5zm.5 1h4v4h-4zM14 4.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5zm.5 1h4v4h-4z"/></svg>
             <span>Uygulamalar</span>
         </a>
-        <a href="Pages/other.html" class="nav-item">
+        <a href="other.html" class="nav-item">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 512 512" fill="currentcolor"><path fill="currentcolor" fill-rule="evenodd" d="M256 42.667A213.333 213.333 0 0 1 469.334 256c0 117.821-95.513 213.334-213.334 213.334c-117.82 0-213.333-95.513-213.333-213.334C42.667 138.18 138.18 42.667 256 42.667m21.334 234.667h-42.667c-52.815 0-98.158 31.987-117.715 77.648c30.944 43.391 81.692 71.685 139.048 71.685s108.104-28.294 139.049-71.688c-19.557-45.658-64.9-77.645-117.715-77.645M256 106.667c-35.346 0-64 28.654-64 64s28.654 64 64 64s64-28.654 64-64s-28.653-64-64-64"/></svg>
             <span>Profil</span>
         </a>
     </div>
 
-    <script type="module">
-    import PhotoSwipe from 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.3.7/photoswipe.esm.min.js';
-    window.PhotoSwipe = PhotoSwipe;
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.3.7/photoswipe-lightbox.esm.min.js"></script>
-
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-
-    <script src="script.js"></script>
 </body>
 </html>
