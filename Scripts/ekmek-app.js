@@ -66,7 +66,21 @@ shareButton.addEventListener('click', function() {
 });
 
 ekmekInputs.forEach(input => {
-    input.addEventListener('focus', function() {
-        this.select();
-    });
+        input.addEventListener('focus', function() {
+            // Sadece mobil cihazlar için bu davranışı tetikle
+            const isMobile = ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+            
+            if (isMobile) {
+                // Giriş tipini geçici olarak "text" yap
+                this.type = 'text';
+
+                // İmleci metnin sonuna taşı
+                this.setSelectionRange(this.value.length, this.value.length);
+                
+                // Kısa bir süre sonra geri "number" yap
+                setTimeout(() => {
+                    this.type = 'number';
+                }, 10);
+            }
+        });
 });

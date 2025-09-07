@@ -43,11 +43,6 @@ function clearFormFields(form) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-    }
-
     const showLoginLink = document.getElementById('show-login');
     const showRegisterLink = document.getElementById('show-register');
     const loginForm = document.getElementById('login-form');

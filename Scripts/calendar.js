@@ -1,9 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-    }
-    
     const monthTitle = document.querySelector('.month-title');
     const calendarSlider = document.querySelector('.calendar-slider');
     const calendarPages = document.querySelectorAll('.calendar-page');
