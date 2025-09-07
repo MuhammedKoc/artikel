@@ -49,19 +49,7 @@
         </a>
     </div>
 
-    <script>
-    // appName'e göre doğru JavaScript dosyasını yükle
-    document.addEventListener('DOMContentLoaded', function() {
-        const params = new URLSearchParams(window.location.search);
-        const appName = params.get('app');
-        if (appName) {
-            const script = document.createElement('script');
-            script.src = `../Scripts/${appName}-app.js`;
-            document.body.appendChild(script);
-        }
-    });
-</script>
-    <script src="../Scripts/app-loader.js"></script>
     
+    <script src="../Scripts/app-loader.js"></script>
 </body>
 </html>
