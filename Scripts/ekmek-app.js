@@ -72,3 +72,11 @@ ekmekInputs.forEach(input => {
         this.setSelectionRange(this.value.length, this.value.length);
     });
 });
+
+ekmekInputs.forEach(input => {
+    input.addEventListener('click', function(e) {
+        // Tıklama olayını durdur, böylece ana div'in olayı tetiklenir
+        e.preventDefault();
+        e.stopPropagation();
+    });
+});

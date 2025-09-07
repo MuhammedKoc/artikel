@@ -284,3 +284,16 @@ body.dark-mode .btn-secondary {
 body.dark-mode .btn-secondary:hover {
     background-color: #555;
 }
+
+/* apps.css dosyasının en altına ekleyin */
+
+.form-group {
+    /* Tüm satırın tıklanabilir olduğunu belirtir */
+    cursor: pointer;
+}
+
+.form-group input {
+    /* Input elementini tıklanamaz yapar, ancak hala focus olabilir */
+    pointer-events: none;
+    cursor: pointer; /* Tıklanabilir satırın imlecini korur */
+}
