@@ -3,7 +3,7 @@ const copyButton = document.getElementById('copy-button');
 const shareButton = document.getElementById('share-button');
 
 // Tüm form inputlarını seç
-const ekmekInputs = document.querySelectorAll('.app-form input[type="number"]');
+const ekmekInputs = document.querySelectorAll('.app-form input[type="text"]');
 
 function generateEkmekList() {
     let list = [];
