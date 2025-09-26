@@ -121,8 +121,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td>${veri.geldigiTarih}</td>
                 <td>
                     <a href="afisler/${veri.kaynakResim}"
-                       data-pswp-width="1200"
-                       data-pswp-height="900"
                        class="poster-button"
                        target="_blank">
                        AFİŞİ GÖSTER
