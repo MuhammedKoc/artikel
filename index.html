@@ -18,21 +18,39 @@
             </div>
             <input type="text" id="aramaCubugu" placeholder="Ürün adı, kod, tarih, link veya fiyat ara...">
         
-            <div class="table-responsive-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ÜRÜN ADI</th>
-                            <th>KOD</th>
-                            <th>FİYAT</th>
-                            <th>GELDİĞİ TARİH</th>
-                            <th>AFİŞ</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tabloGovdesi">
-                        </tbody>
-                </table>
+            <div class="view-toggle-container">
+                <div class="view-button-group">
+                    <input type="checkbox" id="viewToggle" checked="false">
+
+                    <label for="viewToggle" class="view-button grid-button" data-view="grid">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="-1.5 -1 16 16"><path fill="currentColor" fill-rule="evenodd" d="M2 2.5a1 1 0 1 1-2 0a1 1 0 0 1 2 0M1 8a1 1 0 1 0 0-2a1 1 0 0 0 0 2m0 4.5a1 1 0 1 0 0-2a1 1 0 0 0 0 2M4.75 1.75a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5zM4 7a.75.75 0 0 1 .75-.75h8.5a.75.75 0 0 1 0 1.5h-8.5A.75.75 0 0 1 4 7m.75 3.75a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5z" clip-rule="evenodd"/></svg>
+                    </label>
+
+                     <label for="viewToggle" class="view-button list-button" data-view="table">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M4 14.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5zm.5 1h4v4h-4zM14 14.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5zm.5 1h4v4h-4zM4 4.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5zm.5 1h4v4h-4zM14 4.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5zm.5 1h4v4h-4z"/></svg>
+                    </label>
+                </div>
             </div>
+            
+            
+            <div id="tableView" class="active-view">
+                <div class="table-responsive-wrapper">
+                    <table id="productTable">
+                        <thead>
+                            <tr>
+                                <th class="main-column">ÜRÜN ADI</th>
+                                <th class="main-column kod-column">KOD</th>
+                                <th class="action-column">AFİŞ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabloGovdesi">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="gridView" class="grid-view-container">
+                </div>
         
             <div class="pagination-controls">
                 <button id="prevPageBtn">Önceki</button>
@@ -57,7 +75,7 @@
             <span>Liste</span>
         </a>
         <a href="Pages/calendar.html" class="nav-item">
-            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="-3 0 24 24"><path fill="currentColor" d="M17 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3v2a2 2 0 1 0 4 0V2h1v2a2 2 0 1 0 4 0V2h1v2a2 2 0 1 0 4 0V2zM3 8v2h2V8H3zm0 4v2h2v-2H3zm12 0v2h2v-2h-2zm0-4v2h2V8h-2zM7 8v2h2V8H7zm4 0v2h2V8h-2zm0 4v2h2v-2h-2zm-4 0v2h2v-2H7zM5 0a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0V1a1 1 0 0 1 1-1zm10 0a1 1 0 0 1 1 1v3a1 1 0 0 1-2 0V1a1 1 0 0 1 1-1zm-5 0a1 1 0 0 1 1 1v3a1 1 0 0 1-2 0V1a1 1 0 0 1 1-1z"/></svg>
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="-3 0 24 24"><path fill="currentColor" d="M17 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3v2a2 2 0 1 0 4 0V2h1v2a2 2 0 1 0 4 0V2h1v2a2 2 0 1 0 4 0V2zM3 8v2h2V8H3zm0 4v2h2v-2H3zm12 0v2h2v-2h-2zm0-4v2h2V8h-2zM7 8v2h2V8H7zm4 0v2h2V8h-2zm0 4v2h2v-2h-2zm-4 0v2h2v-2H7zM5 0a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0V1a1 1 0 0 1 1-1zm10 0a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0V1a1 1 0 0 1 1-1zm-5 0a1 1 0 0 1 1 1v3a1 1 0 0 1-2 0V1a1 1 0 0 1 1-1z"/></svg>
             <span>Takvim</span>
         </a>
         <a href="Pages/apps.html" class="nav-item">
@@ -72,7 +90,12 @@
 
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-
     <script src="script.js"></script>
+    <script type="module">
+        import PhotoSwipe from 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.3.7/photoswipe.esm.min.js';
+        import PhotoSwipeLightbox from 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.3.7/photoswipe-lightbox.esm.min.js';
+        window.PhotoSwipe = PhotoSwipe;
+        window.PhotoSwipeLightbox = PhotoSwipeLightbox;
+    </script>
 </body>
 </html>
