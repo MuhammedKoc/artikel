@@ -5,10 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevMonthButton = document.querySelector('.prev-month');
     const nextMonthButton = document.querySelector('.next-month');
     const posterDisplay = document.querySelector('.poster-display');
-    const fullscreenOverlay = document.getElementById('fullscreen-overlay');
-    const fullscreenImage = document.getElementById('fullscreen-image');
     
-    // Yeni eklenen elemanları seç
+    // Eski tam ekran değişkenleri temizlendi
+    // const fullscreenOverlay = document.getElementById('fullscreen-overlay');
+    // const fullscreenImage = document.getElementById('fullscreen-image');
+    
     const monthSelector = document.querySelector('.month-selector');
     const monthDropdown = document.getElementById('month-dropdown');
 
@@ -20,15 +21,79 @@ document.addEventListener('DOMContentLoaded', () => {
     let touchCurrentX = 0;
     let touchMoved = false;
 
-    let currentPosters = [];
-    let currentPosterIndex = 0;
-    let isSwipingFullscreen = false;
-    let touchStartXFullscreen = 0;
-    let touchCurrentXFullscreen = 0;
-
     const monthNames = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
         "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
     ];
+    
+    // *** YENİ: Boyut Alma Fonksiyonu ***
+    function getImageDimensions(url) {
+        return new Promise((resolve) => {
+            const img = new Image();
+            img.onload = () => {
+                resolve({
+                    width: img.naturalWidth,
+                    height: img.naturalHeight
+                });
+            };
+            img.onerror = () => {
+                console.warn(`Görsel yüklenemedi, varsayılan boyutlar kullanılıyor: ${url}`);
+                resolve({ width: 600, height: 900 }); 
+            };
+            img.crossOrigin = "Anonymous"; 
+            img.src = url;
+        });
+    }
+
+    // *** YENİ: PhotoSwipe Item Dizisi Hazırlama Fonksiyonu ***
+    async function getPhotoSwipeItems(posterList) {
+        const dimensionPromises = posterList.map(posterName => {
+            const url = `../afisler/${posterName}`;
+            return getImageDimensions(url); 
+        });
+
+        const dimensions = await Promise.all(dimensionPromises);
+
+        return posterList.map((posterName, index) => {
+            return {
+                src: `../afisler/${posterName}`,
+                width: dimensions[index].width,
+                height: dimensions[index].height,
+                alt: `Afiş - ${posterName}` 
+            };
+        });
+    }
+    
+    // *** YENİ: PhotoSwipe Başlatma Fonksiyonu ***
+    async function openPhotoSwipe(posterList, startIndex) {
+        if (typeof PhotoSwipe === 'undefined') {
+             console.error("PhotoSwipe kütüphanesi yüklenmedi. Lütfen HTML'e ekleyin.");
+             return;
+        }
+
+        const items = await getPhotoSwipeItems(posterList);
+        
+        if (items.length === 0) return;
+
+        // ÇÖZÜM: HTML'den '.pswp' yapısını arıyoruz.
+        const pswpElement = document.querySelector('.pswp'); 
+        if (!pswpElement) {
+            console.error("PhotoSwipe için gerekli HTML yapısı (örn: .pswp) bulunamadı.");
+            return;
+        }
+
+        const options = {
+            gallery: pswpElement,
+            children: 'div', 
+            dataSource: items,
+            index: startIndex, 
+            bgOpacity: 0.9,
+            showHideOpacity: true 
+        };
+
+        const lightbox = new PhotoSwipe(options); 
+        lightbox.init();
+    }
+
 
     async function fetchPosterData() {
         try {
@@ -96,6 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // *** GÜNCELLENDİ: handleDayClick fonksiyonu ***
     function handleDayClick(clickedDay) {
         const currentSelected = document.querySelector('.day.selected');
         if (currentSelected) {
@@ -115,16 +181,22 @@ document.addEventListener('DOMContentLoaded', () => {
             date = clickedDay.dataset.date;
         }
 
-        currentPosters = posterLookup[date] || [];
+        const posters = posterLookup[date] || [];
 
         posterDisplay.innerHTML = '';
-        if (currentPosters.length > 0) {
+        if (posters.length > 0) {
             posterDisplay.classList.add('visible');
-            currentPosters.forEach((posterName, index) => {
+            posters.forEach((posterName, index) => {
                 const img = document.createElement('img');
                 img.src = `../afisler/${posterName}`;
                 img.alt = `Afiş - ${date}`;
-                img.addEventListener('click', () => openFullscreen(index));
+                
+                // PhotoSwipe'ı tıklandığında başlat
+                img.addEventListener('click', () => {
+                    // Seçili günün tüm afişlerini gönder, tıklananın index'ini başlangıç yap
+                    openPhotoSwipe(posters, index);
+                });
+                
                 posterDisplay.appendChild(img);
             });
         } else {
@@ -132,39 +204,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function openFullscreen(index) {
-        currentPosterIndex = index;
-        updateFullscreenImage();
-        fullscreenOverlay.style.display = 'flex';
-    }
-
-    function closeFullscreen() {
-        fullscreenOverlay.style.display = 'none';
-    }
-
-    function updateFullscreenImage() {
-        if (currentPosters.length > 0) {
-            const posterName = currentPosters[currentPosterIndex];
-            fullscreenImage.src = `../afisler/${posterName}`;
-        }
-    }
-
-    function prevImage() {
-        currentPosterIndex = (currentPosterIndex - 1 + currentPosters.length) % currentPosters.length;
-        updateFullscreenImage();
-    }
-
-    function nextImage() {
-        currentPosterIndex = (currentPosterIndex + 1) % currentPosters.length;
-        updateFullscreenImage();
-    }
-
     function updateSliderPosition() {
         calendarSlider.style.transform = `translateX(-${currentMonthIndex * 8.333}%)`;
         const newDate = new Date(currentDate.getFullYear(), currentMonthIndex, 1);
         monthTitle.textContent = newDate.toLocaleString('tr-TR', { month: 'long', year: 'numeric' }).toUpperCase();
         
-        // Dropdown'ın seçili ayını güncelle
         monthDropdown.value = currentMonthIndex;
     }
 
@@ -176,7 +220,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSliderPosition();
     }
 
-    // Dropdown'ı doldurma fonksiyonu
     function populateMonthDropdown() {
         monthNames.forEach((month, index) => {
             const option = document.createElement('option');
@@ -187,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
         monthDropdown.value = currentMonthIndex;
     }
 
-    // Olay Dinleyicileri
+    // Olay Dinleyicileri (Ay Navigasyonu ve Dropdown aynı kalır)
     prevMonthButton.addEventListener('click', () => {
         currentMonthIndex = Math.max(currentMonthIndex - 1, 0);
         updateSliderPosition();
@@ -198,25 +241,23 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSliderPosition();
     });
 
-    // Ay başlığını tıklanabilir yap
     monthTitle.addEventListener('click', () => {
         monthDropdown.style.display = 'block';
         monthDropdown.focus();
     });
     
-    // Dropdown'dan bir ay seçilince
     monthDropdown.addEventListener('change', (e) => {
         currentMonthIndex = parseInt(e.target.value, 10);
         updateSliderPosition();
         monthTitle.style.display = 'block';
     });
     
-    // Dropdown'dan odağı kaybedince eski haline dön
     monthDropdown.addEventListener('blur', () => {
         monthDropdown.style.display = 'none';
         monthTitle.style.display = 'block';
     });
 
+    // Takvim Kaydırma (Swipe) işlevi aynı kalır
     calendarSlider.addEventListener('touchstart', (e) => {
         isSwiping = true;
         touchMoved = false;
@@ -257,29 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSliderPosition();
     });
 
-    // Tam ekran için kaydırma işlevselliği
-    fullscreenOverlay.addEventListener('touchstart', (e) => {
-        isSwipingFullscreen = true;
-        touchStartXFullscreen = e.touches[0].clientX;
-    });
-
-    fullscreenOverlay.addEventListener('touchend', (e) => {
-        if (!isSwipingFullscreen) return;
-        isSwipingFullscreen = false;
-        touchCurrentXFullscreen = e.changedTouches[0].clientX;
-        const swipeDistance = touchCurrentXFullscreen - touchStartXFullscreen;
-
-        if (swipeDistance < -50) {
-            nextImage();
-        } else if (swipeDistance > 50) {
-            prevImage();
-        }
-    });
-
-    // Fonksiyonları global scope'a taşıma
-    window.closeFullscreen = closeFullscreen;
-    window.prevImage = prevImage;
-    window.nextImage = nextImage;
+    // Eski tam ekran swipe listener'ları ve global fonksiyonları kaldırıldı.
 
     // Dropdown'ı başlat
     populateMonthDropdown();

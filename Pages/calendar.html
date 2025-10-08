@@ -4,9 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Takvim Uygulaması</title>
-    <script type="module" src="./Scripts/check-auth.js"></script>
+    
+    <script type="module" src="../Scripts/check-auth.js"></script> 
+    
     <link rel="stylesheet" href="../Styles/calendar.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.3.7/photoswipe.min.css">
+    
 </head>
 <body>
 
@@ -36,60 +41,56 @@
         </div>
 
         <div class="calendar-slider">
-            <div class="calendar-page">
-                <div class="days-grid"></div>
-            </div>
-            <div class="calendar-page">
-                <div class="days-grid"></div>
-            </div>
-            <div class="calendar-page">
-                <div class="days-grid"></div>
-            </div>
-            <div class="calendar-page">
-                <div class="days-grid"></div>
-            </div>
-            <div class="calendar-page">
-                <div class="days-grid"></div>
-            </div>
-            <div class="calendar-page">
-                <div class="days-grid"></div>
-            </div>
-            <div class="calendar-page">
-                <div class="days-grid"></div>
-            </div>
-            <div class="calendar-page">
-                <div class="days-grid"></div>
-            </div>
-            <div class="calendar-page">
-                <div class="days-grid"></div>
-            </div>
-            <div class="calendar-page">
-                <div class="days-grid"></div>
-            </div>
-            <div class="calendar-page">
-                <div class="days-grid"></div>
-            </div>
-            <div class="calendar-page">
-                <div class="days-grid"></div>
-            </div>
+            <div class="calendar-page"><div class="days-grid"></div></div>
+            <div class="calendar-page"><div class="days-grid"></div></div>
+            <div class="calendar-page"><div class="days-grid"></div></div>
+            <div class="calendar-page"><div class="days-grid"></div></div>
+            <div class="calendar-page"><div class="days-grid"></div></div>
+            <div class="calendar-page"><div class="days-grid"></div></div>
+            <div class="calendar-page"><div class="days-grid"></div></div>
+            <div class="calendar-page"><div class="days-grid"></div></div>
+            <div class="calendar-page"><div class="days-grid"></div></div>
+            <div class="calendar-page"><div class="days-grid"></div></div>
+            <div class="calendar-page"><div class="days-grid"></div></div>
+            <div class="calendar-page"><div class="days-grid"></div></div>
         </div>
 
         <div class="poster-display"></div>
         
-        <div id="fullscreen-overlay" onclick="closeFullscreen()">
-            <span class="close-button">&times;</span>
-            <div id="fullscreen-image-container">
-                <img id="fullscreen-image" src="" alt="Tam Ekran Afiş">
-                <div class="fullscreen-navigation">
-                    <button id="prev-fullscreen" onclick="prevImage()">&lt;</button>
-                    <button id="next-fullscreen" onclick="nextImage()">&gt;</button>
+        <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="pswp__bg"></div>
+            <div class="pswp__scroll-wrap">
+                <div class="pswp__container">
+                    <div class="pswp__item"></div>
+                    <div class="pswp__item"></div>
+                    <div class="pswp__item"></div>
+                </div>
+                <div class="pswp__ui pswp__ui--hidden">
+                    <div class="pswp__top-bar">
+                        <div class="pswp__counter"></div>
+                        <button class="pswp__button pswp__button--close" title="Kapat"></button>
+                        <button class="pswp__button pswp__button--fs" title="Tam Ekran"></button>
+                        <button class="pswp__button pswp__button--zoom" title="Yakınlaştır/Uzaklaştır"></button>
+                        <div class="pswp__preloader">
+                            <div class="pswp__preloader__icn">
+                                <div class="pswp__preloader__cut">
+                                    <div class="pswp__preloader__donut"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                        <div class="pswp__share-tooltip"></div>
+                    </div>
+                    <button class="pswp__button pswp__button--arrow--left" title="Önceki (Sol ok)"></button>
+                    <button class="pswp__button pswp__button--arrow--right" title="Sonraki (Sağ ok)"></button>
+                    <div class="pswp__caption">
+                        <div class="pswp__caption__center"></div>
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
-
-    
 
     <div class="bottom-nav">
         <a href="../index.html" class="nav-item">
@@ -97,7 +98,7 @@
             <span>Liste</span>
         </a>
         <a href="calendar.html" class="nav-item active">
-            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="-3 0 24 24"><path fill="currentColor" d="M17 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3v2a2 2 0 1 0 4 0V2h1v2a2 2 0 1 0 4 0V2h1v2a2 2 0 1 0 4 0V2zM3 8v2h2V8H3zm0 4v2h2v-2H3zm12 0v2h2v-2h-2zm0-4v2h2V8h-2zM7 8v2h2V8H7zm4 0v2h2V8h-2zm0 4v2h2v-2h-2zm-4 0v2h2v-2H7zM5 0a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0V1a1 1 0 0 1 1-1zm10 0a1 1 0 0 1 1 1v3a1 1 0 0 1-2 0V1a1 1 0 0 1 1-1zm-5 0a1 1 0 0 1 1 1v3a1 1 0 0 1-2 0V1a1 1 0 0 1 1-1z"/></svg>
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="-3 0 24 24"><path fill="currentColor" d="M17 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3v2a2 2 0 1 0 4 0V2h1v2a2 2 0 1 0 4 0V2h1v2a2 2 0 1 0 4 0V2zM3 8v2h2V8H3zm0 4v2h2v-2H3zm12 0v2h2v-2h-2zm0-4v2h2V8h-2zM7 8v2h2V8H7zm4 0v2h2V8h-2zm0 4v2h2v-2h-2zm-4 0v2h2v-2H7zM5 0a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0V1a1 1 0 0 1 1-1zm10 0a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0V1a1 1 0 0 1 1-1zm-5 0a1 1 0 0 1 1 1v3a1 1 0 0 1-2 0V1a1 1 0 0 1 1-1z"/></svg>
             <span>Takvim</span>
         </a>
         <a href="apps.html" class="nav-item">
@@ -115,5 +116,13 @@
     
     <script src="../Scripts/calendar.js"></script>
     <script type="module" src="../Scripts/theme-loader.js"></script>
+
+    <script type="module">
+        import PhotoSwipe from 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.3.7/photoswipe.esm.min.js';
+        import PhotoSwipeLightbox from 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.3.7/photoswipe-lightbox.esm.min.js';
+        window.PhotoSwipe = PhotoSwipe;
+        window.PhotoSwipeLightbox = PhotoSwipeLightbox;
+        // Hata veren "script.js" yüklemesi bu versiyonda yer almamaktadır.
+    </script>
 </body>
 </html>
